@@ -1,7 +1,9 @@
 // pages/api/register.js
 import pool from '../../lib/db';
+import cors, { runMiddleware } from '../../lib/cors';
 
 export default async function handler(req, res) {
+  await runMiddleware(req, res, cors);
   if (req.method === 'POST') {
     const { nome, cpf, data_nascimento, endereco, cep, bairro, email } = req.body;
     const registrationDate = new Date().toISOString();
