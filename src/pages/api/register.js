@@ -5,13 +5,13 @@ import cors, { runMiddleware } from '../../lib/cors';
 export default async function handler(req, res) {
   await runMiddleware(req, res, cors);
   if (req.method === 'POST') {
-    const { nome, cpf, data_nascimento, endereco, cep, bairro, email } = req.body;
+    const { nome, cpf, data_nascimento, endereco, cep, bairro, email, lgpd } = req.body;
     const registrationDate = new Date().toISOString();
 
     try {
       await pool.query(
-        'INSERT INTO users (nome, cpf, data_nascimento, endereco, cep, bairro, email, dt_cadastro) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)',
-        [nome, cpf, data_nascimento, endereco, cep, bairro, email, registrationDate]
+        'INSERT INTO users (nome, cpf, data_nascimento, endereco, cep, bairro, email, dt_cadastro, lgpd) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)',
+        [nome, cpf, data_nascimento, endereco, cep, bairro, email, registrationDate, lgpd]
       );
       res.status(200).json({ message: 'Usuário cadastrado com sucesso!' });
     } catch (err) {
