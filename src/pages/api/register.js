@@ -5,7 +5,8 @@ import cors, { runMiddleware } from '../../lib/cors';
 export default async function handler(req, res) {
   await runMiddleware(req, res, cors);
   if (req.method === 'POST') {
-    const { nome, cpf, data_nascimento, endereco, cep, bairro, email, lgpd } = req.body;
+    const { nome, cpf, data_nascimento, endereco, cep, bairro, email } = req.body;
+    const lgpd = 1;
     const registrationDate = new Date().toISOString();
 
     try {
