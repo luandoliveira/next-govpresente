@@ -2,11 +2,11 @@
 import { Pool } from 'pg';
 
 const pool = new Pool({
-  host: process.env.DB_HOST || '176.57.150.47',
+  host: process.env.DB_HOST || '177.66.14.144',
   user: process.env.DB_USER || 'postgres',
-  password: process.env.DB_PASSWORD || '=oVy4Q^97dO£I£r4TD75',
+  password: process.env.DB_PASSWORD || 'Getag@2024!',
   database: process.env.DB_NAME || 'db_govpresente',
-  port: process.env.DB_PORT || 5555,
+  port: process.env.DB_PORT || 5432,
 });
 
 export default pool;
